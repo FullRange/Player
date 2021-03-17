@@ -2,6 +2,8 @@ package com.oke.player.app
 
 import android.content.Context
 import androidx.room.Room
+import com.oke.player.model.api.MovieApi
+import com.oke.player.model.api.MovieApiImpl
 import com.oke.player.model.dao.AppDB
 import com.oke.player.model.dao.Dao
 import com.oke.player.ui.main.MainRepository
@@ -22,5 +24,9 @@ class AppModule {
 
     @Provides
     @ApplicationScope
-    fun provideMainRepository(dao: Dao): MainRepository = MainRepositoryImpl(dao)
+    fun provideMovieApi(api: MovieApiImpl): MovieApi = api
+
+    @Provides
+    @ApplicationScope
+    fun provideMainRepository(dao: Dao, api: MovieApi): MainRepository = MainRepositoryImpl(dao, api)
 }

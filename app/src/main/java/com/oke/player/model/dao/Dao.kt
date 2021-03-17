@@ -1,9 +1,7 @@
 package com.oke.player.model.dao
 
+import androidx.room.*
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
 import com.oke.player.model.entity.Item
 import com.oke.player.model.entity.Item.Companion.TABLE
 
@@ -11,11 +9,17 @@ import com.oke.player.model.entity.Item.Companion.TABLE
 interface Dao {
 
     @Query("select * from $TABLE")
-    suspend fun getAll(): List<Item>?
+    fun getAll(): List<Item>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(item: Item)
+    fun insertAll(items: List<Item>)
 
     @Query("delete from $TABLE")
-    suspend fun deleteAll()
+    fun deleteAll()
+
+    @Transaction
+    fun refresh(items: List<Item>) {
+        deleteAll()
+        insertAll(items)
+    }
 }

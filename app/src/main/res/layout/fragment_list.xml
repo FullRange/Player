@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:completionThreshold="3"
-            android:hint="Search"
+            android:hint="@string/search_txt"
             android:imeOptions="actionSearch|flagNoExtractUi"
             android:inputType="text"
             android:lines="1"

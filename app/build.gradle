@@ -85,11 +85,15 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$versions.dagger2"
     kapt "com.google.dagger:dagger-android-processor:$versions.dagger2"
 
-    implementation "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
-    implementation "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
-    implementation "io.reactivex.rxjava2:rxkotlin:$versions.rx_kotlin"
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit2"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit2"
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
 
-    implementation "com.mapbox.mapboxsdk:mapbox-android-sdk:$versions.mapbox"
+    implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit2"
+    implementation "com.squareup.moshi:moshi:$versions.moshi"
+    implementation("com.squareup.moshi:moshi-kotlin:$versions.moshi")
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
 

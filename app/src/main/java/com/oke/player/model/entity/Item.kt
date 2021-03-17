@@ -8,11 +8,12 @@ import com.oke.player.model.entity.Item.Companion.TABLE
     tableName = TABLE
 )
 data class Item(
-    val name: String = "none"
-) {
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-
+    val id: Int = 0,
+    val name: String?,
+    val type: String?,
+    val image: String?
+) {
     companion object {
         const val TABLE: String = "items"
     }
