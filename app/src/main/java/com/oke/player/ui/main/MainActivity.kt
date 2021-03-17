@@ -5,6 +5,8 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.oke.player.R
 import com.oke.player.databinding.ActivityMainBinding
 import dagger.android.support.DaggerAppCompatActivity
@@ -25,6 +27,8 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
 
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
@@ -32,6 +36,7 @@ class MainActivity : DaggerAppCompatActivity() {
                 viewModel = this@MainActivity.mainViewModel
                 lifecycleOwner = this@MainActivity
             }
+        navController = findNavController(R.id.main_fragment)
     }
 
     override fun onDestroy() {
