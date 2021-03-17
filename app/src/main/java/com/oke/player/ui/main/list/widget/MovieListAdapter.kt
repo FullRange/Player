@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.oke.player.databinding.ItemMovieBinding
+import com.oke.player.ui.main.MainViewModel
 import com.oke.player.ui.main.list.MovieItem
 
 private val diffUtil = object : DiffUtil.ItemCallback<MovieItem>() {
@@ -14,12 +15,14 @@ private val diffUtil = object : DiffUtil.ItemCallback<MovieItem>() {
 }
 
 class MovieListAdapter(
+    private val viewModel: MainViewModel,
     private val lifecycleOwner: LifecycleOwner
 ) : ListAdapter<MovieItem, ItemMovieViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemMovieViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemMovieBinding.inflate(inflater, parent, false).apply {
+            viewModel = this@MovieListAdapter.viewModel
             lifecycleOwner = this@MovieListAdapter.lifecycleOwner
         }
 

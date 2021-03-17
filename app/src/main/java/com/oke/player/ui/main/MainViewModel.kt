@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oke.player.ui.main.list.MovieItem
+import com.oke.player.util.SingleLiveEvent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,6 +19,8 @@ class MainViewModel @Inject constructor(
 
     val state: LiveData<MainState> get() = _state
 
+    val effect = SingleLiveEvent<MainEffect>()
+
     fun onSearch(text: String) {
         viewModelScope.launch {
             repository.refresh(text)
@@ -25,5 +28,9 @@ class MainViewModel @Inject constructor(
                 MovieItem(name = it.name, type = it.type, image = it.image)
             })
         }
+    }
+
+    fun onItemClicked() {
+        effect.value = MainEffect.GoToPlayer
     }
 }

@@ -12,14 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/enter_search"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:completionThreshold="3"
             android:hint="@string/search_txt"
-            android:imeOptions="actionSearch|flagNoExtractUi"
-            android:inputType="text"
             android:lines="1"
             app:layout_constraintTop_toTopOf="parent"/>
 

@@ -95,6 +95,8 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:$versions.moshi")
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
 
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
 
     testImplementation "junit:junit:$versions.junit"
