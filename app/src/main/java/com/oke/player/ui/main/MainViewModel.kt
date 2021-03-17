@@ -30,7 +30,21 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun clearData() {
+        viewModelScope.launch {
+            repository.deleteAll()
+            _state.value = currentState.copy(list = emptyList())
+        }
+    }
+
     fun onItemClicked() {
         effect.value = MainEffect.GoToPlayer
+    }
+
+    fun getVideoUrl() = videoUrl
+
+    companion object {
+
+        private const val videoUrl: String = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
     }
 }

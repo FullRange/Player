@@ -47,6 +47,8 @@ class ListFragment : Fragment() {
             it?.let {
                 if (it.length >= minLength) {
                     viewModel.onSearch(it.toString())
+                } else {
+                    viewModel.clearData()
                 }
             }
         }
